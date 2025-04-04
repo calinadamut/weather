@@ -1,6 +1,6 @@
 let weather = {
-    apiKey: "1fccbSbpjjWegfER_oBjrnf8AG4osS3ZtNMElytQ-GA", // Replace with your Unsplash API key
-    weatherApiKey: "94d50e579fadab8872ebe421ede06e22", // Replace with your OpenWeatherMap API key
+    apiKey: "1fccbSbpjjWegfER_oBjrnf8AG4osS3ZtNMElytQ-GA", // Unsplash API key
+    weatherApiKey: "94d50e579fadab8872ebe421ede06e22", // OpenWeatherMap API key
     fetchWeather: function (city) {
         fetch(
             "https://api.openweathermap.org/data/2.5/weather?q=" +
@@ -39,9 +39,12 @@ let weather = {
         // Fetch image from Unsplash specific to the city
         this.fetchUnsplashImage(name);
     },
+
     fetchUnsplashImage: function (city) {
-        // Make a request to Unsplash to get images related to the city
-        fetch(`https://api.unsplash.com/photos/random?query=${city}&client_id=${this.apiKey}&w=1920&h=1080`)
+        const encodedCity = encodeURIComponent(city);
+        console.log("Fetching image for city:", city);
+    
+        fetch(`https://api.unsplash.com/photos/random?query=${encodedCity}&client_id=${this.apiKey}&w=1920&h=1080`)
             .then((response) => {
                 if (!response.ok) {
                     throw new Error("Failed to fetch image from Unsplash");
@@ -49,23 +52,31 @@ let weather = {
                 return response.json();
             })
             .then((data) => {
-                if (data.length > 0) {
-                    // Use the first image that matches the city
-                    const imageUrl = data[0].urls.full; // Full resolution image (best quality)
+                console.log("Unsplash API Response:", data);
+    
+                if (data.urls && data.urls.regular) {
+                    const imageUrl = data.urls.regular;
+                    console.log("Selected Image URL:", imageUrl);
                     document.body.style.backgroundImage = `url(${imageUrl})`;
+                    document.body.style.backgroundSize = "cover";
+                    document.body.style.backgroundPosition = "center";
                 } else {
-                    console.log("No images found for the city.");
+                    console.log("No image found for the city.");
                 }
             })
             .catch((error) => {
                 console.error("Error fetching image:", error);
             });
-    },
+    }
+    
+     
+    ,
     search: function () {
         this.fetchWeather(document.querySelector(".search-bar").value);
     },
 };
 
+// Event listeners for search functionality
 document.querySelector(".search button").addEventListener("click", function () {
     weather.search();
 });
@@ -78,4 +89,5 @@ document
         }
     });
 
+// Initial city fetch (optional)
 weather.fetchWeather("Frankfurt"); // Initial city fetch
