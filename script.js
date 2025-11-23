@@ -91,5 +91,6 @@ document
     });
 
 // Initial city fetch (optional)
-weather.fetchWeather("Frankfurt"); // Initial city fetch
+weather.fetchWeather("Timisoara"); // Initial city fetch
+
 
