@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -8,6 +8,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./style.css">
+    <link rel="icon" href="/img/favicon.png" type="image/x-icon">
+
+
     <script src="./script.js" defer></script>
 </head>
 
@@ -26,6 +29,7 @@
         <div class="weather loading">
             <h2 class="city">Weather in Frankfurt</h2>
             <h1 class="temp">51°C</h1>
+            <div class="feels-like">Feels like: 48°C</div> <!-- "Feels Like" Temperature -->
             <div class="flex">
                 <img src="https://openweathermap.org/img/wn/04n.png" alt="" class="icon" />
                 <div class="description">Cloudy</div>
@@ -33,7 +37,13 @@
             <div class="pressure">Pressure: 1000 mbar</div>
             <div class="humidity">Humidity: 60%</div>
             <div class="wind">Wind speed: 6.2 km/h</div>
+            <div class="sunrise">08</div>
+            <div class="sunset">22</div>
 
+
+            <!-- New fields for temp_min, temp_max, and visibility -->
+            <div class="temp_min">Temp min: 0.58°C</div>
+            <div class="temp_max">Temp max: 3.2°C</div>
         </div>
     </div>
 </body>
