@@ -109,4 +109,5 @@ document.querySelector(".search-bar").addEventListener("keyup", function (event)
 });
 
 // Initial city fetch (optional)
-weather.fetchWeather("Frankfurt"); // Initial city fetch
+weather.fetchWeather("Timisoara"); // Initial city fetch
+
