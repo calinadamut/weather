@@ -1,6 +1,7 @@
 let weather = {
     apiKey: "1fccbSbpjjWegfER_oBjrnf8AG4osS3ZtNMElytQ-GA", // Unsplash API key
-    weatherApiKey: "94d50e579fadab8872ebe421ede06e22", // OpenWeatherMap API key
+    // weatherApiKey: "94d50e579fadab8872ebe421ede06e22", // OpenWeatherMap API key
+    weatherApiKey: "a46c2532d4de0a8f71800fb649abdc2c", // OpenWeatherMap API key
     fetchWeather: function (city) {
         fetch(
             "https://api.openweathermap.org/data/2.5/weather?q=" +
@@ -91,3 +92,4 @@ document
 
 // Initial city fetch (optional)
 weather.fetchWeather("Frankfurt"); // Initial city fetch
+
