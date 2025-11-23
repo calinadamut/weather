@@ -77,8 +77,8 @@ convertUnixTime: function (timestamp) {
             .then((data) => {
                 console.log("Unsplash API Response:", data);
     
-                if (data.length > 0 && data[0].urls && data[0].urls.regular) {
-                    const imageUrl = data[0].urls.regular;
+                if (data.urls && data.urls.regular) {
+                    const imageUrl = data.urls.regular;
                     console.log("Selected Image URL:", imageUrl);
                     document.body.style.backgroundImage = `url(${imageUrl})`;
                     document.body.style.backgroundSize = "cover";
@@ -90,8 +90,10 @@ convertUnixTime: function (timestamp) {
             .catch((error) => {
                 console.error("Error fetching image:", error);
             });
-    },
-
+    }
+    
+     
+    ,
     search: function () {
         this.fetchWeather(document.querySelector(".search-bar").value);
     },
@@ -110,4 +112,5 @@ document.querySelector(".search-bar").addEventListener("keyup", function (event)
 
 // Initial city fetch (optional)
 weather.fetchWeather("Timisoara"); // Initial city fetch
+
 
