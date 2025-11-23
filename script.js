@@ -110,7 +110,8 @@ document.querySelector(".search-bar").addEventListener("keyup", function (event)
 });
 
 // Initial city fetch (optional)
-weather.fetchWeather("Timisoara"); // Initial city fetch
+weather.fetchWeather("Sulzbach"); // Initial city fetch
+
 
 
 
